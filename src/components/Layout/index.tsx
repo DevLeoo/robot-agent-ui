@@ -1,5 +1,4 @@
 import React from "react";
-import MainHeader from "../MainHeader";
 import Aside from "../Aside";
 import Content from "../Content";
 
@@ -11,7 +10,6 @@ interface ILayoutProps {
 const Layout: React.FC<ILayoutProps> = ({ children }) => (
   <div className="h-screen flex flex-col">
     <div className="flex flex-1">
-      {/*<MainHeader />*/}
       <Aside />
       <Content>{children}</Content>
     </div>

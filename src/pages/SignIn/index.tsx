@@ -14,7 +14,6 @@ import { useAuth } from "@/hooks/auth";
 import { useState } from "react";
 
 const SignIn = () => {
-
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -22,7 +21,7 @@ const SignIn = () => {
 
   return (
     <main className="h-screen flex w-full">
-      <div className="bg-secondary-foreground w-full h-full flex p-16">
+      <div className="bg-secondary-foreground w-full h-full flex p-16 justify-center">
         <img src={industryImg} alt="" />
       </div>
       <section className="flex items-center justify-center bg-background h-full max-w-3xl w-full p-4">
@@ -31,19 +30,23 @@ const SignIn = () => {
             <CardTitle className="text-2xl font-bold tracking-tighter">
               Entre com a sua conta
             </CardTitle>
-            <CardDescription>
-              Utilsenha para entrar
-            </CardDescription>
+            <CardDescription>Utilsenha para entrar</CardDescription>
           </CardHeader>
           <CardContent>
             <div>
               <Label htmlFor="email">E-mail</Label>
-              <Input id="email" placeholder="exemplo@email.com" type="email" onChange={(e) => setEmail(e.target.value)}/>
+              <Input
+                id="email"
+                placeholder="exemplo@email.com"
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div>
               <div className="mt-4">
                 <Label htmlFor="password">Senha</Label>
-            ize seu e-mail e     <Input
+                ize seu e-mail e{" "}
+                <Input
                   id="password"
                   placeholder="sua senha secreta"
                   type="password"
@@ -51,7 +54,12 @@ const SignIn = () => {
                 />
               </div>
             </div>
-            <Button className="mt-6 w-full" onClick={() => signIn(email, password)} >Entrar</Button>
+            <Button
+              className="mt-6 w-full"
+              onClick={() => signIn(email, password)}
+            >
+              Entrar
+            </Button>
           </CardContent>
           <CardFooter>
             <p className="text-muted-foreground text-center text-sm">
