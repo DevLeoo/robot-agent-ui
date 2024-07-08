@@ -6,6 +6,7 @@ import {
   WorkflowIcon,
   LogOutIcon,
 } from "lucide-react";
+import { Button } from "../ui/button";
 
 const Aside: React.FC = () => {
   const { signOut } = useAuth();
@@ -39,12 +40,13 @@ const Aside: React.FC = () => {
           </a>
         </nav>
       </aside>
-      <div
-        className="pl-14 pb-10 text-zinc-100 flex items-center gap-3 cursor-pointer hover:text-zinc-400"
-        onClick={signOut}
-      >
-        <LogOutIcon />
-        <span className="text-2xl">Sair</span>
+      <div className="pl-14 pb-10 text-zinc-100 flex items-center">
+        <Button
+          onClick={signOut}
+          className="gap-3 text-2xl hover:text-zinc-500"
+        >
+          <LogOutIcon /> Sair
+        </Button>
       </div>
     </div>
   );
