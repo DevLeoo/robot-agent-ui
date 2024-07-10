@@ -75,7 +75,7 @@ const CreateAgent: React.FC = () => {
             </div>
           </div>
           <div className="w-full space-y-2">
-            <Label>Orientacoes</Label>
+            <Label className="text-xl">Orientações</Label>
             <Textarea placeholder="Traga um contexto sobre a acao que você quer que o agente execute" />
           </div>
         </CardContent>

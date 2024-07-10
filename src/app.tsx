@@ -1,12 +1,15 @@
 import React from "react";
-import Routes from "./routes";
+import Router from "./routes";
+import { queryClient } from "./react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 
 const App: React.FC = () => {
-
   return (
-    <>
-      <Routes />
-    </>
+    <React.StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <Router />
+      </QueryClientProvider>
+    </React.StrictMode>
   );
 };
 

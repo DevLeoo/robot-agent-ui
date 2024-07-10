@@ -10,14 +10,19 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import industryImg from "@/assets/signin.svg";
-import { useAuth } from "@/hooks/auth";
 import { useState } from "react";
+import { useSignIn } from "@/hooks/auth/useSignIn";
 
 const SignIn = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const { signIn } = useAuth();
+  const signIn = useSignIn();
+
+  const submitForm = (email: string, password: string) => {
+    console.log("teste");
+    if (email && password) signIn({ email, password });
+  };
 
   return (
     <main className="h-screen flex w-full">
@@ -30,7 +35,9 @@ const SignIn = () => {
             <CardTitle className="text-2xl font-bold tracking-tighter">
               Entre com a sua conta
             </CardTitle>
-            <CardDescription>Utilsenha para entrar</CardDescription>
+            <CardDescription>
+              Utilize seu e-mail e senha para entrar
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div>
@@ -56,7 +63,7 @@ const SignIn = () => {
             </div>
             <Button
               className="mt-6 w-full"
-              onClick={() => signIn(email, password)}
+              onClick={() => submitForm(email, password)}
             >
               Entrar
             </Button>

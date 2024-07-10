@@ -53,6 +53,12 @@ const data: Payment[] = [
     status: "ativo",
     name: "Agente 007",
   },
+  {
+    id: "is2j1i9",
+    temperatura: 10,
+    status: "inativo",
+    name: "Rubens",
+  },
 ];
 
 export type Payment = {
@@ -269,7 +275,7 @@ const Agents: React.FC = () => {
                   onClick={() => table.previousPage()}
                   disabled={!table.getCanPreviousPage()}
                 >
-                  Previous
+                  Anterior
                 </Button>
                 <Button
                   variant="outline"
@@ -277,7 +283,7 @@ const Agents: React.FC = () => {
                   onClick={() => table.nextPage()}
                   disabled={!table.getCanNextPage()}
                 >
-                  Next
+                  Próximo
                 </Button>
               </div>
             </div>

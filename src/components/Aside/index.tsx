@@ -1,4 +1,3 @@
-import { useAuth } from "@/hooks/auth";
 import logo from "../../assets/signin.svg";
 import {
   BotIcon,
@@ -7,9 +6,10 @@ import {
   LogOutIcon,
 } from "lucide-react";
 import { Button } from "../ui/button";
+import { useSignOut } from "@/hooks/auth/useSignOut";
 
 const Aside: React.FC = () => {
-  const { signOut } = useAuth();
+  const signOut = useSignOut();
 
   return (
     <div className=" w-80 bg-primary flex flex-col">

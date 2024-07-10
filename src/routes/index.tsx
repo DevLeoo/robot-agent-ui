@@ -1,16 +1,92 @@
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import React, { PropsWithChildren } from "react";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 
-import { useAuth } from "../hooks/auth";
+import Layout from "@/components/Layout";
+import Agents from "@/pages/Agents";
+import Chats from "@/pages/Chats";
+import SignIn from "@/pages/Auth/SignIn";
+import Configuration from "@/pages/Configuration";
+import { useUser } from "@/hooks/auth/useUser";
+import NotFoundPage from "@/pages/NotFound";
 
-import App from "./app.routes";
-import Auth from "./auth.routes";
+function ProtectedRoute({ children }: PropsWithChildren) {
+  const { user } = useUser();
+  if (!user) return <Navigate to="/auth/sign-in" replace />;
 
+  return <>{children}</>;
+}
 
-const Routes: React.FC = () => {
-  const { logged } = useAuth();
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <ProtectedRoute>
+        <React.Suspense fallback={"Loading..."}>
+          <Layout>
+            <Agents />
+          </Layout>
+        </React.Suspense>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/chats",
+    element: (
+      <ProtectedRoute>
+        <React.Suspense fallback={"Loading..."}>
+          <Layout>
+            <Chats />
+          </Layout>
+        </React.Suspense>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/configuration/:id",
+    element: (
+      <ProtectedRoute>
+        <React.Suspense fallback={"Loading..."}>
+          <Layout>
+            <Configuration />
+          </Layout>
+        </React.Suspense>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/auth/sign-in",
+    element: (
+      <React.Suspense fallback={"Loading..."}>
+        <SignIn />
+      </React.Suspense>
+    ),
+  },
+  {
+    path: "*",
+    element: (
+      <React.Suspense fallback={"Loading..."}>
+        <NotFoundPage />
+      </React.Suspense>
+    ),
+  },
+  // {
+  //   path: "/auth/sign-up",
+  //   element: (
+  //     <React.Suspense fallback={"Loading..."}>
+  //       <Layout>
+  //         <SignUpPage />
+  //       </Layout>
+  //     </React.Suspense>
+  //   ),
+  // },
+]);
 
-  return <BrowserRouter>{logged ? <App /> : <Auth />}</BrowserRouter>;
+const Router = () => {
+  return <RouterProvider router={router} />;
 };
 
-export default Routes;
+export default Router;
