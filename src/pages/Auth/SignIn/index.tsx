@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import industryImg from "@/assets/signin.svg";
 import { useState } from "react";
 import { useSignIn } from "@/hooks/auth/useSignIn";
+import { Separator } from "@/components/ui/separator";
 
 const SignIn = () => {
   const [email, setEmail] = useState<string>("");
@@ -67,6 +68,7 @@ const SignIn = () => {
             >
               Entrar
             </Button>
+            <Separator className="mt-5" />
           </CardContent>
           <CardFooter>
             <p className="text-muted-foreground text-center text-sm">

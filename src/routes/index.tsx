@@ -69,7 +69,9 @@ const router = createBrowserRouter([
     path: "*",
     element: (
       <React.Suspense fallback={"Loading..."}>
-        <NotFoundPage />
+        <Layout>
+          <NotFoundPage />
+        </Layout>
       </React.Suspense>
     ),
   },

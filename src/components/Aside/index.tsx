@@ -11,6 +11,10 @@ import { useSignOut } from "@/hooks/auth/useSignOut";
 const Aside: React.FC = () => {
   const signOut = useSignOut();
 
+  const handleSignOut = () => {
+    signOut();
+  };
+
   return (
     <div className=" w-80 bg-primary flex flex-col">
       <aside className="p-6 flex-1">
@@ -42,7 +46,7 @@ const Aside: React.FC = () => {
       </aside>
       <div className="pl-14 pb-10 text-zinc-100 flex items-center">
         <Button
-          onClick={signOut}
+          onClick={handleSignOut}
           className="gap-3 text-2xl hover:text-zinc-500"
         >
           <LogOutIcon /> Sair
