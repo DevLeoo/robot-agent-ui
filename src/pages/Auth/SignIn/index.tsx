@@ -27,7 +27,7 @@ const SignIn = () => {
 
   return (
     <main className="h-screen flex w-full">
-      <div className="bg-secondary-foreground w-full h-full flex p-16 justify-center">
+      <div className="transition-all duration-500 ease-in-out bg-secondary-foreground w-full sd:fw-full md:w-[50%] h-full flex p-16 justify-center rounded-r-[40%]">
         <img src={industryImg} alt="" />
       </div>
       <section className="flex items-center justify-center bg-background h-full max-w-3xl w-full p-4">
@@ -53,7 +53,6 @@ const SignIn = () => {
             <div>
               <div className="mt-4">
                 <Label htmlFor="password">Senha</Label>
-                ize seu e-mail e{" "}
                 <Input
                   id="password"
                   placeholder="sua senha secreta"

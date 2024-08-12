@@ -1,6 +1,11 @@
 import React from "react";
-import Aside from "../Aside";
+import Aside, { SidebarItem } from "../Aside";
 import Content from "../Content";
+import {
+  BotIcon,
+  MessageSquareTextIcon,
+  WorkflowIcon,
+} from "lucide-react";
 
 interface ILayoutProps {
   children: React.ReactNode;
@@ -10,7 +15,12 @@ interface ILayoutProps {
 const Layout: React.FC<ILayoutProps> = ({ children }) => (
   <div className="h-screen flex flex-col">
     <div className="flex flex-1">
-      <Aside />
+      <Aside>
+        <SidebarItem icon={<BotIcon size={20}/>} text="Agentes" to="/" active/>
+        <SidebarItem icon={<MessageSquareTextIcon size={20}/>} text="Conversas" to="/chats"/> 
+        <SidebarItem icon={<WorkflowIcon size={20}/>} text="Integrações"  to="/integrations"/>
+
+      </Aside>
       <Content>{children}</Content>
     </div>
   </div>
