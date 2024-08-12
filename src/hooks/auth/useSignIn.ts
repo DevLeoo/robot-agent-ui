@@ -17,7 +17,6 @@ async function signIn({
   password: string;
 }): Promise<User> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return {} as any;
   const response = await fetch("http://localhost:3000/api/auth/signin", {
     method: "POST",
     headers: {

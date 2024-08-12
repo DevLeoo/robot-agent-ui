@@ -21,7 +21,6 @@ const SignIn = () => {
   const signIn = useSignIn();
 
   const submitForm = (email: string, password: string) => {
-    console.log("teste");
     if (email && password) signIn({ email, password });
   };
 
