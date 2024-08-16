@@ -7,7 +7,7 @@ const App: React.FC = () => {
   return (
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
-        <Router />
+          <Router />
       </QueryClientProvider>
     </React.StrictMode>
   );

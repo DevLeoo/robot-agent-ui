@@ -1,11 +1,12 @@
 import { useSignOut } from "@/hooks/auth/useSignOut";
 import { ChevronLast, ChevronFirst, LogOutIcon } from "lucide-react"
 import { createContext, ReactNode, useContext, useState } from "react"
+import { Link, useLocation } from "react-router-dom";
 
 const SidebarContext = createContext({} as {expanded: boolean})
 
 export default function Sidebar({ children }: {children: ReactNode}) {
-  const [expanded, setExpanded] = useState(true)
+  const [expanded, setExpanded] = useState(false)
   const signOut = useSignOut();
 
   const handleSignOut = () => {
@@ -70,16 +71,17 @@ export interface SidebarItemProps {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function SidebarItem({ icon, text, active, alert, to }: SidebarItemProps) {
   const { expanded } = useContext(SidebarContext)
-  
+  const location = useLocation();
+
   return (
-    <a href={to}>
+    <Link to={to}>
     <li
       className={`
         relative flex items-center py-2 px-3 my-1
         font-medium rounded-md cursor-pointer
         transition-colors group
         ${
-          active
+          active || location.pathname === to
             ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
             : "hover:bg-indigo-50 text-gray-600"
         }
@@ -114,6 +116,6 @@ export function SidebarItem({ icon, text, active, alert, to }: SidebarItemProps)
         </div>
       )}
     </li>
-    </a>
+    </Link>
   )
 }

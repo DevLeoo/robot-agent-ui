@@ -6,22 +6,17 @@ import {
   MessageSquareTextIcon,
   WorkflowIcon,
 } from "lucide-react";
+import { Outlet } from "react-router-dom";
 
-interface ILayoutProps {
-  children: React.ReactNode;
-}
-
-//"grid h-screen min-w-[315px] grid-cols-[250px_auto] grid-rows-[70px_auto] grid-areas-layout md:grid-cols-[100%] md:grid-rows-[70px_auto]"
-const Layout: React.FC<ILayoutProps> = ({ children }) => (
+const Layout: React.FC = () => (
   <div className="h-screen flex flex-col">
     <div className="flex flex-1">
       <Aside>
-        <SidebarItem icon={<BotIcon size={20}/>} text="Agentes" to="/" active/>
+        <SidebarItem icon={<BotIcon size={20}/>} text="Agentes" to="/"/>
         <SidebarItem icon={<MessageSquareTextIcon size={20}/>} text="Conversas" to="/chats"/> 
-        <SidebarItem icon={<WorkflowIcon size={20}/>} text="Integrações"  to="/integrations"/>
-
+        <SidebarItem icon={<WorkflowIcon size={20}/>} text="Integrações" to="/integrations"/>
       </Aside>
-      <Content>{children}</Content>
+      <Content><Outlet/></Content>
     </div>
   </div>
 );

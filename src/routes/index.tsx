@@ -4,7 +4,6 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-
 import Layout from "@/components/Layout";
 import Agents from "@/pages/Agents";
 import Chats from "@/pages/Chats";
@@ -25,37 +24,43 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <ProtectedRoute>
-        <React.Suspense fallback={"Loading..."}>
-          <Layout>
+        <Layout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        path: "/",
+        element: (
+          <React.Suspense fallback={"Loading..."}>
             <Agents />
-          </Layout>
-        </React.Suspense>
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/chats",
-    element: (
-      <ProtectedRoute>
-        <React.Suspense fallback={"Loading..."}>
-          <Layout>
+          </React.Suspense>
+        ),
+      },
+      {
+        path: "chats",
+        element: (
+          <React.Suspense fallback={"Loading..."}>
             <Chats />
-          </Layout>
-        </React.Suspense>
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/configuration/:id",
-    element: (
-      <ProtectedRoute>
-        <React.Suspense fallback={"Loading..."}>
-          <Layout>
+          </React.Suspense>
+        ),
+      },
+      {
+        path: "configuration/:id",
+        element: (
+          <React.Suspense fallback={"Loading..."}>
             <Configuration />
-          </Layout>
-        </React.Suspense>
-      </ProtectedRoute>
-    ),
+          </React.Suspense>
+        ),
+      },
+      {
+        path: "*",
+        element: (
+          <React.Suspense fallback={"Loading..."}>
+              <NotFoundPage />
+          </React.Suspense>
+        ),
+      },
+    ]
   },
   {
     path: "/auth/sign-in",
@@ -65,16 +70,7 @@ const router = createBrowserRouter([
       </React.Suspense>
     ),
   },
-  {
-    path: "*",
-    element: (
-      <React.Suspense fallback={"Loading..."}>
-        <Layout>
-          <NotFoundPage />
-        </Layout>
-      </React.Suspense>
-    ),
-  },
+  
   // {
   //   path: "/auth/sign-up",
   //   element: (
